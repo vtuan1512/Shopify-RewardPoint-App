@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "4009861de0b9d777b49fbaa5abc64724"
+name = "RewardPoint-app"
+handle = "rewardpoint-app"
+application_url = "https://md-hon-discs-ryan.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products, read_customers, write_customers, write_cart_transforms, write_checkouts, write_discounts"
+
+[auth]
+redirect_urls = [
+  "https://md-hon-discs-ryan.trycloudflare.com/auth/callback",
+  "https://md-hon-discs-ryan.trycloudflare.com/auth/shopify/callback",
+  "https://md-hon-discs-ryan.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[pos]
+embedded = false
+
+[build]
+include_config_on_deploy = true
+dev_store_url = "quickstart-691521f8.myshopify.com"
+automatically_update_urls_on_dev = true
